@@ -292,7 +292,7 @@ static int proximity_store_cancelation(struct ssp_data *data, int iCalCMD)
 
 	iRet = cancel_filp->f_op->write(cancel_filp, (u8 *)&data->uProxCanc,
 		sizeof(u8), &cancel_filp->f_pos);
-	if (iRet != sizeof(u8)) {
+	if (iRet != sizeof(unsigned int)) {
 		pr_err("%s: Can't write the cancel data to file\n", __func__);
 		iRet = -EIO;
 	}

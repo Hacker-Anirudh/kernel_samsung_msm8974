@@ -45,14 +45,14 @@
 #include "ssp_sensorhub.h"
 #endif
 
-#define SSP_DBG		1
+#define SSP_DBG		0
 
 #define SUCCESS		1
 #define FAIL		0
 #define ERROR		-1
 
 #define FACTORY_DATA_MAX	64
-#if SSP_DBG
+#if defined(SSP_DBG)
 #define SSP_FUNC_DBG 1
 #define SSP_DATA_DBG 0
 
@@ -63,7 +63,7 @@
 #define ssp_dbg(dev, format, ...)
 #endif
 
-#if SSP_FUNC_DBG
+#if defined(SSP_FUNC_DBG)
 #define func_dbg() do { \
 	printk(KERN_INFO "[SSP]: %s\n", __func__); \
 	} while (0)
@@ -71,7 +71,7 @@
 #define func_dbg()
 #endif
 
-#if SSP_DATA_DBG
+#if defined(SSP_DATA_DBG)
 #define data_dbg(dev, format, ...) do { \
 	printk(KERN_INFO dev, format, ##__VA_ARGS__); \
 	} while (0)

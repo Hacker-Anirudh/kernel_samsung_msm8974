@@ -202,6 +202,8 @@ extern int poweroff_charging;
 
 #define NUM_OF_KEY		4
 
+#define TK_KEYPAD_ENABLE
+
 enum {
 	CORERIVER_TOUCHKEY,
 	CYPRESS_TOUCHKEY,
@@ -364,7 +366,9 @@ struct cypress_touchkey_info {
 
 	u8	touchkeyid;
 	bool	support_fw_update;
+#ifdef TK_KEYPAD_ENABLE
 	atomic_t	keypad_enable;
+#endif
 	bool	do_checksum;
 	struct wake_lock fw_wakelock;
 
